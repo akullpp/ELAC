@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+<!-- Further information can be found at: http://dakhma.net/elac/?page_id=72 -->
+<!-- Please mark folders with an "/" at the end -->
+
+
+<!-- Test/Train -->
+<entry key="PathToTrainingFiles">../Data/semeval_train50/</entry>
+<entry key="PathToTestFiles">../Data/semeval_test/</entry>
+
+
+<!-- ACR-Systems -->
+<entry key="Runner">JavaRapRunner;BARTRunner;LingpipeRunner</entry>
+
+
+<!--Lingpipe Chunker -->
+<entry key="LingPipeChunkgerModel">./res/ne-en-news-muc6.AbstractCharLmRescoringChunker</entry>
+
+
+<!-- Feature Extraction -->
+<entry key="EvaluationMethod">MUC6</entry>
+
+<entry key="FeatureFilter">isSubj;neType;pronounCountSentence;anaphoraPos;sentenceOffset</entry>
+<entry key="isSubj">true</entry>
+<entry key="neType">organization;location;person;other</entry>
+<entry key="pronounCountSentence">4;1000</entry>
+<entry key="anaphoraPos">prp;prp$</entry>
+<entry key="sentenceOffset">0;2</entry>
+
+
+<!-- Machine Learning -->
+<entry key="classifier">J48</entry>
+<entry key="options">-N 4 -R</entry>
+<entry key="subclassifier"></entry>
+<entry key="stacking"></entry>
+
+
+<!-- Output -->
+<entry key="PathForLog">../Data/</entry>
+<entry key="ResultOutputDir">../Data/</entry>
+<entry key="PrintCorrectCorefPairs">False</entry>
+<entry key="PrintWrongCorefPairs">False</entry>
+
+
+</properties>

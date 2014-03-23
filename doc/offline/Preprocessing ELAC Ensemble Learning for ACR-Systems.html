@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://dakhma.net/elac/?page_id=56 -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>  Preprocessing | ELAC: Ensemble Learning for ACR-Systems</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="Preprocessing%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://dakhma.net/elac/?feed=rss2" />
+	<link rel="pingback" href="http://dakhma.net/elac/xmlrpc.php" />
+			<link rel="alternate" type="application/rss+xml" title="ELAC: Ensemble Learning for ACR-Systems &raquo; Preprocessing Kommentar Feed" href="http://dakhma.net/elac/?feed=rss2&amp;page_id=56" />
+<script type='text/javascript' src='Preprocessing%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/comment-reply.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dakhma.net/elac/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dakhma.net/elac/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='ELAC: Ensemble Learning for ACR-Systems' href='http://dakhma.net/elac' />
+<link rel='up' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='prev' title='Feature selection' href='http://dakhma.net/elac/?page_id=53' />
+<link rel='next' title='Findings' href='http://dakhma.net/elac/?page_id=60' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://dakhma.net/elac/?page_id=56' />
+</head>
+<body>
+<div id="nav">
+			<div id="menus"><ul><li class="current_page_item"><a href="./ELAC Ensemble Learning for ACR-Systems.html">Home</a></li><li class="page_item page-item-49"><a href="./Documentation ELAC Ensemble Learning for ACR-Systems.html" title="Documentation">Documentation</a>
+<ul class='children'>
+	<li class="page_item page-item-225"><a href="./Architecture ELAC Ensemble Learning for ACR-Systems.html" title="Architecture">Architecture</a></li>
+	<li class="page_item page-item-72"><a href="./Configuration ELAC Ensemble Learning for ACR-Systems.html" title="Configuration">Configuration</a></li>
+	<li class="page_item page-item-56"><a href="./Preprocessing ELAC Ensemble Learning for ACR-Systems.html" title="Preprocessing">Preprocessing</a></li>
+	<li class="page_item page-item-121"><a href="./Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-181"><a href="./Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-215"><a href="./Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-53"><a href="./Feature selection ELAC Ensemble Learning for ACR-Systems.html" title="Feature selection">Feature selection</a></li>
+	<li class="page_item page-item-10"><a href="./Extension ELAC Ensemble Learning for ACR-Systems.html" title="Extension">Extension</a></li>
+</ul>
+</li>
+<li class="page_item page-item-60"><a href="./Findings ELAC Ensemble Learning for ACR-Systems.html" title="Findings">Findings</a>
+<ul class='children'>
+	<li class="page_item page-item-63"><a href="./Findings Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-128"><a href="./Findings Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-105"><a href="./Findings Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-135"><a href="./Domain adaptation ELAC Ensemble Learning for ACR-Systems.html" title="Domain adaptation">Domain adaptation</a></li>
+</ul>
+</li>
+</ul></div>
+	</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="http://dakhma.net/elac">ELAC: Ensemble Learning for ACR-Systems</a></h1>
+		<h2></h2>
+					</div>
+<hr />
+<div id="content">
+		<div class="post post-single" id="post-56"><!-- post div -->
+		<h2 class="title title-single">Preprocessing</h2>
+		<div class="post-info-top">
+			<span class="post-info-date">Posted on 30. Juli 2010 [<a class="post-edit-link" href="http://dakhma.net/elac/wp-admin/post.php?post=56&amp;action=edit" title="Seite bearbeiten">Edit</a>]</span>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a> (0)</span>
+		</div>
+		<div class="fixed"></div>
+		<div class="entry">
+			<div>
+<h1>Preprocessing</h1>
+<p>ELAC&#8217;s components PMM and ML expect the presence of corpora in MMAX2 format which have already been processed by JavaRap and BART (LingPipe will be executed on the fly). The directory containing the MMAX2 files should therefore also contain the results of those two systems. This is done to save runtime as on-the-fly execution of BART and JavaRap tends to be too time consuming.</p>
+<p>To achieve a better overall performance, we implemented a preprocessing package, which does the following:</p>
+<ul>
+<li>Run JavaRap on a MMAX2 corpus and store the results under <code>./Basedata/javarap/</code></li>
+<li>Convert a Salsa/Tiger Corpus into an interims format using inline annotation</li>
+</ul>
+<h2>JavaRapPreprocessing</h2>
+<p>This class provides the conversion features needed to process both training and test data with JavaRap and stores their results so that they can be used by JavaRapRunner afterwards.</p>
+<p>As JavaRap (especially the underlying reranking parser) tends to be difficult to compile, it&#8217;s possible to execute JavaRap remotely on a specified server (username and password required to establish a secure connection).</p>
+<p><code>Javarap.jar</code> is required: <a href="http://aye.comp.nus.edu.sg/~qiu/NLPTools/JavaRAP.html">http://aye.comp.nus.edu.sg/~qiu/NLPTools/JavaRAP.html</a></p>
+<h3>How to use:</h3>
+<p>JavaRapPreproecessing is accessible through ELAC&#8217;s command line interface.</p>
+<p>You are prompted for the following options</p>
+<ul>
+<li><code>ssh/local</code>: specify remote or local execution.</li>
+<li><code>JavaRapPath</code>: Path to the JavaRap installation (<code>AnaphoraResoultion.jar</code> has to exist).</li>
+</ul>
+<p>To run JavaRap Preprocessing:</p>
+<ul>
+<li>make sure that training and test files have been specified correctly in the config file</li>
+<li>To run JavaRap using a remote connection: choose the appropriate in the Command Line Interface (option 1 &#8211; execution via ssh) &#8211; Note: you are prompted for the hostname, a temporary directory on the server, where rights are set correctly (at least +w) and your credentials.</li>
+<li>To run JavaRap locally: choose the appropriate in the Command Line Interface (option 2 &#8211; local execution) and specify <code>JavaRapPath</code></li>
+</ul>
+<p>The alignment from JavaRap to MMAX2 is done by word positions, which are not stored in MMAX2 but used by JavaRap to display the coreferences. This is done by iterating over all the words produced by JavaRap output and mapping the positions to the appropriate <code>Word</code>objects which have been extracted by <code>MMAxParser</code>.</p>
+<p>The results are stored in the folder <code>./Basedata/javarap/ </code>for the corresponding MMAX2 corpus.</p>
+<h2>TigerPreprocessing</h2>
+<p>The Tiger/Salsa Format consists of a standoff annotation, where coreference links are attached to words and phrases by graph structures.</p>
+<p>This format is converted into an interim format using inline annotation, where coreferences are marked by XML-Tags. A chain of coreferent expressions is marked by the same <code>coref_set</code> attribute value.</p>
+<p>This XML file can then be converted into an MMAX2 project using the <a href="http://mmax2.sourceforge.net/">MMAX2 Annotation Tool&#8217;s</a> Project wizzard.</p>
+<h3>How to use</h3>
+<p>TigerPreprocessing is accessible through ELAC&#8217;s command line interface (Menu option <code>Salsa Parser</code>).</p>
+<p>You are prompted for the following options:</p>
+<ul>
+<li><code>input file </code> The file to be processed in a valid Tiger/Salsa xml format.</li>
+<li><code>output file</code> Destination for the inline annotated output file.</li>
+</ul>
+</div>
+					</div>
+	</div><!-- END post -->
+	<!-- You can start editing here. -->
+						<!-- If comments are open, but there are no comments. -->
+			<div id="comments-div"><span id="comments-addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a></span><h2 id="comments">0 Comments.</h2></div>
+						<div id="respond">
+			<h2>Leave a Reply</h2>
+			<div class="cancel-comment-reply">
+				<small><a rel="nofollow" id="cancel-comment-reply-link" href="/elac/?page_id=56#respond" style="display:none;">Hier klicken, um die Antwort abzubrechen.</a></small>
+			</div>
+								<form action="http://dakhma.net/elac/wp-comments-post.php" method="post" id="commentform">
+										<p>Logged in as <a href="http://dakhma.net/elac/wp-admin/profile.php">kull</a>. <a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdakhma.net%2Felac%2F%3Fpage_id%3D56&amp;_wpnonce=ca76c8af62" title="Log out of this account">Log out &raquo;</a></p>
+										<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea></p>
+						<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit" /><input type='hidden' name='comment_post_ID' value='56' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="98ddabc1b8" />					</form>
+					</div><!--end respond-->
+		</div><!--content-->
+<div id="sidebar-border">
+<div id="sidebar">
+
+
+<ul>
+	<li class="widget">
+		<h3>Categories</h3>
+		<div id="zbench-cat">
+			<form action="http://dakhma.net/elac/" method="get">
+				<select name='cat' id='cat' class='postform'  onchange='return this.form.submit()'>
+	<option value='-1'>Select category</option>
+	<option class="level-0" value="6">About&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4">News&nbsp;&nbsp;(1)</option>
+</select>
+				<noscript><input type="submit" value="View" /></noscript>
+			</form>
+		</div>
+	</li>
+</ul>
+
+<ul>
+	<li class="widget">
+		<h3>Links</h3>
+		<ul class="zsofa-links">
+			<li><a href="http://www.cl.uni-heidelberg.de/">Computational Linguistics Heidelberg</a></li>
+		</ul>
+		<div class="fixed"></div>
+		<h3>Meta</h3>
+		<ul>
+			<li><a href="http://dakhma.net/elac/wp-admin/">Admin</a></li>			<li><a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;_wpnonce=ca76c8af62">Abmelden</a></li>
+					</ul>
+	</li>
+</ul>
+
+
+
+
+
+</div>
+</div></div><!--wrapper-->
+<div class="fixed"></div>
+<div id="footer">
+</div><!--footer-->
+</body>
+</html>

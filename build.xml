@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ELAC" basedir="." default="main">
+    <property name="src.dir"	value="src"/>
+    <property name="bin.dir"	value="bin"/>
+	<property name="doc.dir"	value="doc"/>
+	<property name="res.dir"	value="res"/>
+	<property name="main-class"	value="de.uniheidelberg.cl.swp.demo.Main"/>
+	
+	<path id="classpath">
+        <pathelement location="bin"/>
+		<pathelement location="${res.dir}/AnaphoraResolution.jar"/>
+		<pathelement location="${res.dir}/batik-awt-util.jar"/>
+		<pathelement location="${res.dir}/batik-svggen.jar"/>
+		<pathelement location="${res.dir}/batik-util.jar"/>
+		<pathelement location="${res.dir}/ganymed-ssh2-build250.jar"/>
+		<pathelement location="${res.dir}/jakarta-oro-2.0.8.jar"/>
+		<pathelement location="${res.dir}/lingpipe-4.0.0.jar"/>
+		<pathelement location="${res.dir}/MMAX2.jar"/>
+		<pathelement location="${res.dir}/weka.jar"/>
+		<pathelement location="${res.dir}/xalan.jar"/>
+		<pathelement location="${res.dir}/xercesImpl.jar"/>
+    </path>
+	
+	<manifestclasspath property="jar.classpath" jarfile="${ant.project.name}.jar">
+		<classpath refid="classpath"/>
+	</manifestclasspath>
+	
+    <target name="clean">
+        <delete dir="${bin.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+	
+    <target name="compile">
+        <mkdir dir="${bin.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="${ant.project.name}.jar" basedir="${bin.dir}">
+            <manifest>
+				<attribute name="Class-Path" value="${jar.classpath}"/>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+	<target name="tar">
+		<tar destfile="${ant.project.name}.tar" basedir="${basedir}"/>
+	</target>
+	
+	<target name="doc">
+		<mkdir dir="${doc.dir}"/>
+		<javadoc sourcepath="${src.dir}" classpath="classpath" packagenames="de.uniheidelberg.cl.swp.*" destdir="${doc.dir}" access="public">
+		</javadoc>
+	</target>
+	
+	<target name="main" depends="compile, jar"/>
+
+</project>

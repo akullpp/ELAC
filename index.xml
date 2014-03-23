@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<projekt>
+	<titel>Ensemble Learning for Anaphora- and Coreference-Resolution-Systems</titel>
+	<typ>Studienprojekt</typ>
+	<version>1.0</version>
+	<autoren>Thomas Boegel, Lukas Funk, Andreas Kull</autoren>
+	<angefangen>27.04.2010</angefangen>
+	<abgabe>06.08.2010</abgabe>
+	<veranstaltung>Softwareprojekt, SS 2010</veranstaltung>
+	<institution>SCL</institution>
+	<abstract>ELAC's core functionality is to utilize several Anaphora- and
+	Coreference-Resolution-Systems (ACRS) in order to use their predictions for training an
+	ensemble of (meta-)machine-learning algorithms.
+	This ensemble classifies the ACRS predictions on a test corpus as either trustworthy or
+	untrustworthy and tries to achieve a better recall/precision than a single ACRS.
+	There are several non-core functionalities as well:
+		1. A tool which extracts the feature distribution in a corpus.
+		2. A parser which transforms Salsa/Tiger format to an inline notation which can be
+		   processed by MMAX2.
+		3. An ablation testing tool which determines the best feature sequence.
+	</abstract>
+</projekt>

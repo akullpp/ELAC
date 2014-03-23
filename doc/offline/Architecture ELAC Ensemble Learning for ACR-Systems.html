@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://dakhma.net/elac/?page_id=225 -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>  Architecture | ELAC: Ensemble Learning for ACR-Systems</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="Architecture%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://dakhma.net/elac/?feed=rss2" />
+	<link rel="pingback" href="http://dakhma.net/elac/xmlrpc.php" />
+			<link rel="alternate" type="application/rss+xml" title="ELAC: Ensemble Learning for ACR-Systems &raquo; Architecture Kommentar Feed" href="http://dakhma.net/elac/?feed=rss2&amp;page_id=225" />
+<script type='text/javascript' src='Architecture%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/comment-reply.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dakhma.net/elac/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dakhma.net/elac/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='ELAC: Ensemble Learning for ACR-Systems' href='http://dakhma.net/elac' />
+<link rel='up' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='prev' title='Feature distribution' href='http://dakhma.net/elac/?page_id=215' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://dakhma.net/elac/?page_id=225' />
+</head>
+<body>
+<div id="nav">
+			<div id="menus"><ul><li class="current_page_item"><a href="./ELAC Ensemble Learning for ACR-Systems.html">Home</a></li><li class="page_item page-item-49"><a href="./Documentation ELAC Ensemble Learning for ACR-Systems.html" title="Documentation">Documentation</a>
+<ul class='children'>
+	<li class="page_item page-item-225"><a href="./Architecture ELAC Ensemble Learning for ACR-Systems.html" title="Architecture">Architecture</a></li>
+	<li class="page_item page-item-72"><a href="./Configuration ELAC Ensemble Learning for ACR-Systems.html" title="Configuration">Configuration</a></li>
+	<li class="page_item page-item-56"><a href="./Preprocessing ELAC Ensemble Learning for ACR-Systems.html" title="Preprocessing">Preprocessing</a></li>
+	<li class="page_item page-item-121"><a href="./Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-181"><a href="./Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-215"><a href="./Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-53"><a href="./Feature selection ELAC Ensemble Learning for ACR-Systems.html" title="Feature selection">Feature selection</a></li>
+	<li class="page_item page-item-10"><a href="./Extension ELAC Ensemble Learning for ACR-Systems.html" title="Extension">Extension</a></li>
+</ul>
+</li>
+<li class="page_item page-item-60"><a href="./Findings ELAC Ensemble Learning for ACR-Systems.html" title="Findings">Findings</a>
+<ul class='children'>
+	<li class="page_item page-item-63"><a href="./Findings Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-128"><a href="./Findings Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-105"><a href="./Findings Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-135"><a href="./Domain adaptation ELAC Ensemble Learning for ACR-Systems.html" title="Domain adaptation">Domain adaptation</a></li>
+</ul>
+</li>
+</ul></div>
+	</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="http://dakhma.net/elac">ELAC: Ensemble Learning for ACR-Systems</a></h1>
+		<h2></h2>
+					</div>
+<hr />
+<div id="content">
+		<div class="post post-single" id="post-225"><!-- post div -->
+		<h2 class="title title-single">Architecture</h2>
+		<div class="post-info-top">
+			<span class="post-info-date">Posted on 3. August 2010 [<a class="post-edit-link" href="http://dakhma.net/elac/wp-admin/post.php?post=225&amp;action=edit" title="Seite bearbeiten">Edit</a>]</span>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a> (0)</span>
+		</div>
+		<div class="fixed"></div>
+		<div class="entry">
+			<h1>Architectural Overview</h1>
+<p>ELAC consists of several different modules that add up to a fully working anaphora and coreference resolution system based on ensemble learning. This page intends to give you a complete overview over the different modules and how they work together, for details refer to their dedicated pages respectively.<br />
+Note that the ELAC package also comes with several standalone tools that were created during development and are described on their own pages, but not mentioned here any further.</p>
+<div id="attachment_226" class="wp-caption alignnone" style="width: 310px"><a href="http://dakhma.net/elac/wp-content/uploads/2010/08/dasGrosseGanze1.png"><img class="aligncenter size-medium wp-image-262" title="dasGrosseGanze" src="Architecture%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/dasGrosseGanze1-300x146.png" alt="" width="300" height="146" /></a><br />
+<p class="wp-caption-text">Architectural overview</p></div>
+<h2>Configuration</h2>
+<p>The configuration file provides user/system dependant information for almost every module, from file paths to feature selection. Detailed information can be found <a href="http://dakhma.net/elac/?page_id=72">here</a>.</p>
+<h2>Input</h2>
+<p>The input corpora have to be annotated in <a href="http://mmax2.sourceforge.net/">MMAX2 format</a> to be read by ELAC&#8217;s MMAX2 parser for further processing.</p>
+<h2>ACR Systems</h2>
+<p>ELAC uses ensemble learning, i.e. it makes use of several anaphora and coreference resolution (ACR) systems. At the moment this comprises BART, JavaRAP and LingPipe, each with its own advantages and disadvantages. But as ELAC provides easy to use interfaces, it is possible to extend this list in the future.<br />
+The ACR systems&#8217; role in the process is described below.</p>
+<h2>Performance measurement</h2>
+<p>The ACR systems introduced above predict what they believe are coreference chains/pairs from the corpus using their own algorithms each. These hypothesis coreferences are then checked against a previously extracted correct list of coreferences (gold standard) and saved into an .arff file for later use.</p>
+<p>Note that the coreference pair itself is not saved, but rather the feature vector which goes along with it, together with the name of the ACR system that provided it and the information whether this was indeed a coreference (<code>+</code>) or not (<code>-</code>).</p>
+<h2>Machine learning</h2>
+<p>The previously produced .arff file is given as input to Weka, a tool used for classification. Based on user options from the configuration file Weka uses different classifiers to decide which ACR system is to trust for which feature vector, thus improving the results of another check against the gold standard.</p>
+<h2>Output</h2>
+<p>After this last check against the gold standard precision, recall and both combined into the F-score are output as a degree for quality measurement.</p>
+					</div>
+	</div><!-- END post -->
+	<!-- You can start editing here. -->
+						<!-- If comments are open, but there are no comments. -->
+			<div id="comments-div"><span id="comments-addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a></span><h2 id="comments">0 Comments.</h2></div>
+						<div id="respond">
+			<h2>Leave a Reply</h2>
+			<div class="cancel-comment-reply">
+				<small><a rel="nofollow" id="cancel-comment-reply-link" href="/elac/?page_id=225#respond" style="display:none;">Hier klicken, um die Antwort abzubrechen.</a></small>
+			</div>
+								<form action="http://dakhma.net/elac/wp-comments-post.php" method="post" id="commentform">
+										<p>Logged in as <a href="http://dakhma.net/elac/wp-admin/profile.php">kull</a>. <a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdakhma.net%2Felac%2F%3Fpage_id%3D225&amp;_wpnonce=ca76c8af62" title="Log out of this account">Log out &raquo;</a></p>
+										<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea></p>
+						<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit" /><input type='hidden' name='comment_post_ID' value='225' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="8e216fe04d" />					</form>
+					</div><!--end respond-->
+		</div><!--content-->
+<div id="sidebar-border">
+<div id="sidebar">
+
+
+<ul>
+	<li class="widget">
+		<h3>Categories</h3>
+		<div id="zbench-cat">
+			<form action="http://dakhma.net/elac/" method="get">
+				<select name='cat' id='cat' class='postform'  onchange='return this.form.submit()'>
+	<option value='-1'>Select category</option>
+	<option class="level-0" value="6">About&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4">News&nbsp;&nbsp;(1)</option>
+</select>
+				<noscript><input type="submit" value="View" /></noscript>
+			</form>
+		</div>
+	</li>
+</ul>
+
+<ul>
+	<li class="widget">
+		<h3>Links</h3>
+		<ul class="zsofa-links">
+			<li><a href="http://www.cl.uni-heidelberg.de/">Computational Linguistics Heidelberg</a></li>
+		</ul>
+		<div class="fixed"></div>
+		<h3>Meta</h3>
+		<ul>
+			<li><a href="http://dakhma.net/elac/wp-admin/">Admin</a></li>			<li><a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;_wpnonce=ca76c8af62">Abmelden</a></li>
+					</ul>
+	</li>
+</ul>
+
+
+
+
+
+</div>
+</div></div><!--wrapper-->
+<div class="fixed"></div>
+<div id="footer">
+</div><!--footer-->
+</body>
+</html>

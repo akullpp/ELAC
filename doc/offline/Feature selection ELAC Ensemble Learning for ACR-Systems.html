@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://dakhma.net/elac/?page_id=53 -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>  Feature selection | ELAC: Ensemble Learning for ACR-Systems</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="Feature%20selection%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://dakhma.net/elac/?feed=rss2" />
+	<link rel="pingback" href="http://dakhma.net/elac/xmlrpc.php" />
+			<link rel="alternate" type="application/rss+xml" title="ELAC: Ensemble Learning for ACR-Systems &raquo; Feature selection Kommentar Feed" href="http://dakhma.net/elac/?feed=rss2&amp;page_id=53" />
+<script type='text/javascript' src='Feature%20selection%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/comment-reply.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dakhma.net/elac/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dakhma.net/elac/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='ELAC: Ensemble Learning for ACR-Systems' href='http://dakhma.net/elac' />
+<link rel='up' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='prev' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='next' title='Preprocessing' href='http://dakhma.net/elac/?page_id=56' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://dakhma.net/elac/?page_id=53' />
+</head>
+<body>
+<div id="nav">
+			<div id="menus"><ul><li class="current_page_item"><a href="./ELAC Ensemble Learning for ACR-Systems.html">Home</a></li><li class="page_item page-item-49"><a href="./Documentation ELAC Ensemble Learning for ACR-Systems.html" title="Documentation">Documentation</a>
+<ul class='children'>
+	<li class="page_item page-item-225"><a href="./Architecture ELAC Ensemble Learning for ACR-Systems.html" title="Architecture">Architecture</a></li>
+	<li class="page_item page-item-72"><a href="./Configuration ELAC Ensemble Learning for ACR-Systems.html" title="Configuration">Configuration</a></li>
+	<li class="page_item page-item-56"><a href="./Preprocessing ELAC Ensemble Learning for ACR-Systems.html" title="Preprocessing">Preprocessing</a></li>
+	<li class="page_item page-item-121"><a href="./Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-181"><a href="./Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-215"><a href="./Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-53"><a href="./Feature selection ELAC Ensemble Learning for ACR-Systems.html" title="Feature selection">Feature selection</a></li>
+	<li class="page_item page-item-10"><a href="./Extension ELAC Ensemble Learning for ACR-Systems.html" title="Extension">Extension</a></li>
+</ul>
+</li>
+<li class="page_item page-item-60"><a href="./Findings ELAC Ensemble Learning for ACR-Systems.html" title="Findings">Findings</a>
+<ul class='children'>
+	<li class="page_item page-item-63"><a href="./Findings Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-128"><a href="./Findings Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-105"><a href="./Findings Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-135"><a href="./Domain adaptation ELAC Ensemble Learning for ACR-Systems.html" title="Domain adaptation">Domain adaptation</a></li>
+</ul>
+</li>
+</ul></div>
+	</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="http://dakhma.net/elac">ELAC: Ensemble Learning for ACR-Systems</a></h1>
+		<h2></h2>
+					</div>
+<hr />
+<div id="content">
+		<div class="post post-single" id="post-53"><!-- post div -->
+		<h2 class="title title-single">Feature selection</h2>
+		<div class="post-info-top">
+			<span class="post-info-date">Posted on 30. Juli 2010 [<a class="post-edit-link" href="http://dakhma.net/elac/wp-admin/post.php?post=53&amp;action=edit" title="Seite bearbeiten">Edit</a>]</span>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a> (0)</span>
+		</div>
+		<div class="fixed"></div>
+		<div class="entry">
+			<p><strong>Feature selection &#8211; Ablation testing</strong></p>
+<p>To achieve optimal machine learning results and substantially improve the performance and robustness of classifier (this particularly holds for domain adaptation), the features individually and in interaction with other features should be monitored and tested systematically for each corpus and classifier.</p>
+<p>We decided to support this task by implementing simple a feature selection algorithm testing all the possible combinations of feature sets and returning the feature vector leading to the best results.</p>
+<p>More efficient techniques (such as stepwise regression or subset selection) should be implemented as the number of features increases.</p>
+<h3>How to use</h3>
+<p>Ablation testing is accessible through ELAC&#8217;s command line interface. To run ablation testing, choose the appropriate option in the main menu (option 6).</p>
+<p>Note that you are prompted for the following parameters:<br />
+<code>output file</code> specifies the path to the file used as output for the results.</p>
+<p><strong>Input</strong></p>
+<p>Input for Ablation testing is determined by the <code>PathToTestFiles</code> setting in the configuration file.<br />
+Furthermore, the acr systems to be used can be specified there.</p>
+<p>The results (precision, recall and f-score) for each feature combination and the best combination are written to the stated <code>output file</code> path.</p>
+					</div>
+	</div><!-- END post -->
+	<!-- You can start editing here. -->
+						<!-- If comments are open, but there are no comments. -->
+			<div id="comments-div"><span id="comments-addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a></span><h2 id="comments">0 Comments.</h2></div>
+						<div id="respond">
+			<h2>Leave a Reply</h2>
+			<div class="cancel-comment-reply">
+				<small><a rel="nofollow" id="cancel-comment-reply-link" href="/elac/?page_id=53#respond" style="display:none;">Hier klicken, um die Antwort abzubrechen.</a></small>
+			</div>
+								<form action="http://dakhma.net/elac/wp-comments-post.php" method="post" id="commentform">
+										<p>Logged in as <a href="http://dakhma.net/elac/wp-admin/profile.php">kull</a>. <a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdakhma.net%2Felac%2F%3Fpage_id%3D53&amp;_wpnonce=ca76c8af62" title="Log out of this account">Log out &raquo;</a></p>
+										<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea></p>
+						<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit" /><input type='hidden' name='comment_post_ID' value='53' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="8250b77cef" />					</form>
+					</div><!--end respond-->
+		</div><!--content-->
+<div id="sidebar-border">
+<div id="sidebar">
+
+
+<ul>
+	<li class="widget">
+		<h3>Categories</h3>
+		<div id="zbench-cat">
+			<form action="http://dakhma.net/elac/" method="get">
+				<select name='cat' id='cat' class='postform'  onchange='return this.form.submit()'>
+	<option value='-1'>Select category</option>
+	<option class="level-0" value="6">About&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4">News&nbsp;&nbsp;(1)</option>
+</select>
+				<noscript><input type="submit" value="View" /></noscript>
+			</form>
+		</div>
+	</li>
+</ul>
+
+<ul>
+	<li class="widget">
+		<h3>Links</h3>
+		<ul class="zsofa-links">
+			<li><a href="http://www.cl.uni-heidelberg.de/">Computational Linguistics Heidelberg</a></li>
+		</ul>
+		<div class="fixed"></div>
+		<h3>Meta</h3>
+		<ul>
+			<li><a href="http://dakhma.net/elac/wp-admin/">Admin</a></li>			<li><a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;_wpnonce=ca76c8af62">Abmelden</a></li>
+					</ul>
+	</li>
+</ul>
+
+
+
+
+
+</div>
+</div></div><!--wrapper-->
+<div class="fixed"></div>
+<div id="footer">
+</div><!--footer-->
+</body>
+</html>

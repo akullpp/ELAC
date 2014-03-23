@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://dakhma.net/elac/?page_id=10 -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>  Extension | ELAC: Ensemble Learning for ACR-Systems</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="Extension%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://dakhma.net/elac/?feed=rss2" />
+	<link rel="pingback" href="http://dakhma.net/elac/xmlrpc.php" />
+			<link rel="alternate" type="application/rss+xml" title="ELAC: Ensemble Learning for ACR-Systems &raquo; Extension Kommentar Feed" href="http://dakhma.net/elac/?feed=rss2&amp;page_id=10" />
+<script type='text/javascript' src='Extension%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/comment-reply.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dakhma.net/elac/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dakhma.net/elac/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='ELAC: Ensemble Learning for ACR-Systems' href='http://dakhma.net/elac' />
+<link rel='up' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='next' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://dakhma.net/elac/?page_id=10' />
+</head>
+<body>
+<div id="nav">
+			<div id="menus"><ul><li class="current_page_item"><a href="./ELAC Ensemble Learning for ACR-Systems.html">Home</a></li><li class="page_item page-item-49"><a href="./Documentation ELAC Ensemble Learning for ACR-Systems.html" title="Documentation">Documentation</a>
+<ul class='children'>
+	<li class="page_item page-item-225"><a href="./Architecture ELAC Ensemble Learning for ACR-Systems.html" title="Architecture">Architecture</a></li>
+	<li class="page_item page-item-72"><a href="./Configuration ELAC Ensemble Learning for ACR-Systems.html" title="Configuration">Configuration</a></li>
+	<li class="page_item page-item-56"><a href="./Preprocessing ELAC Ensemble Learning for ACR-Systems.html" title="Preprocessing">Preprocessing</a></li>
+	<li class="page_item page-item-121"><a href="./Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-181"><a href="./Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-215"><a href="./Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-53"><a href="./Feature selection ELAC Ensemble Learning for ACR-Systems.html" title="Feature selection">Feature selection</a></li>
+	<li class="page_item page-item-10"><a href="./Extension ELAC Ensemble Learning for ACR-Systems.html" title="Extension">Extension</a></li>
+</ul>
+</li>
+<li class="page_item page-item-60"><a href="./Findings ELAC Ensemble Learning for ACR-Systems.html" title="Findings">Findings</a>
+<ul class='children'>
+	<li class="page_item page-item-63"><a href="./Findings Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-128"><a href="./Findings Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-105"><a href="./Findings Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-135"><a href="./Domain adaptation ELAC Ensemble Learning for ACR-Systems.html" title="Domain adaptation">Domain adaptation</a></li>
+</ul>
+</li>
+</ul></div>
+	</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="http://dakhma.net/elac">ELAC: Ensemble Learning for ACR-Systems</a></h1>
+		<h2></h2>
+					</div>
+<hr />
+<div id="content">
+		<div class="post post-single" id="post-10"><!-- post div -->
+		<h2 class="title title-single">Extension</h2>
+		<div class="post-info-top">
+			<span class="post-info-date">Posted on 29. Juli 2010 [<a class="post-edit-link" href="http://dakhma.net/elac/wp-admin/post.php?post=10&amp;action=edit" title="Seite bearbeiten">Edit</a>]</span>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a> (0)</span>
+		</div>
+		<div class="fixed"></div>
+		<div class="entry">
+			<p>ELAC was designed to be easily extendable as more resources and steps of preprocessing should be added to improve the machine learning results. Both extracted features and new ACR systems can be added modularly at a later point of time.</p>
+<h2>How to add new Features?</h2>
+<p>Features are both extracted and represented by FeatureExtractors (<code>FE_</code> classes) which inherit from <code>AbstractFeatureExtractor</code>. A feature is a typed Object to make sure that each CoreferencePair consists of a Vector of generic Features which can be either of simple or complex type.
+</p>
+<p><a href="http://dakhma.net/elac/wp-content/uploads/2010/07/feature-extraction-.png"><img class="aligncenter size-medium wp-image-9" title="feature extraction" src="Extension%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/feature-extraction--256x300.png" alt="" width="256" height="300" /></a></p>
+<p>Each Feature Extractor has to implement the following methods:</p>
+<ul>
+<li>A default constructor without any arguments, which sets the name attribute of the Feature Extractor.</li>
+<li>
+<pre><code>extractFeatures(CoreferencePair corefPair, MMAXParser mmax)</code></pre>
+<ul>
+<li>This method extracts the feature value for the <em>corefPair</em> given as parameter. The method has full access to the mmax parser and therefore to all annotation levels provided by the MMAX2 annotated corpus.</li>
+<li>The Feature and its value are encoded as typed <code>Feature&lt;?&gt;</code> Objects, where <code>?</code> is the type of the feature and has to be one of the types in the Enumeration FeatureType. Of course, new types can be added as needed.</li>
+<li>If you want to add a numerical feature value for example, you can do so by creating a <code>Feature</code> Object:
+<pre><code>Feature&lt;Integer&gt; feature = new Feature&lt;Integer&gt;("distance");</code></pre>
+</li>
+<li>The extracted feature value is then set via <code>.setValue(value)</code> applied to the feature.</li>
+<li>After extraction, the feature itself has to be added to the CoreferencePair by calling <code>addFeatureToCoref(feature, corefPair);</code></li>
+<li>Make sure to throw an <code>Exception</code>, if anything goes wrong. The feature will then be ignored for the current coreference pair</li
+</ul>
+</li>
+<li>
+<pre><code>getWekaAttribute()</code></pre>
+<p>This method returns a <code>Attribute</code> Object for Weka, which is used and required for machine learning afterwards. Weka internally converts each feature into double values. See the Weka documentation or the already existing Feature Extractors to find out, how to properly create a Weka Attribute for your feature type.</li>
+</ul>
+<h2>How to add a new ACR system?</h2>
+<p>To add a new ACR system, you have to inherit the abstract class <code>Runner</code>. Therefore, the following methods have to be implemented:</p>
+<ul>
+<li>
+<pre><code>init(MMAXParser mmax)</code></pre>
+<p>This method provides the MMAXParser — the input for your ACR system. Make sure to convert the input file into an appropriate format and store all necessary source information with the instance to have the information for extraction. (Note: you can access the raw content of a filej as a single String by calling <code>mmax.getPlainTextAsString()</code>)</li>
+<li>A constructor without any arguments to initialize the ACR system (i.e. load all required models and components).</li>
+<li>
+<pre><code>run()</code></pre>
+<p>The system should run on the MMAX file provided via initialization and store the results as a List of Entity Objects.</li>
+<li>
+<pre><code>getCoreferents()</code></pre>
+<p>Should return the list of predicted entities.</li>
+</ul>
+<p>
+Once the class has been implemented, you can use the ACR system by inserting the class name in the configuration file.</p>
+					</div>
+	</div><!-- END post -->
+	<!-- You can start editing here. -->
+						<!-- If comments are open, but there are no comments. -->
+			<div id="comments-div"><span id="comments-addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a></span><h2 id="comments">0 Comments.</h2></div>
+						<div id="respond">
+			<h2>Leave a Reply</h2>
+			<div class="cancel-comment-reply">
+				<small><a rel="nofollow" id="cancel-comment-reply-link" href="/elac/?page_id=10#respond" style="display:none;">Hier klicken, um die Antwort abzubrechen.</a></small>
+			</div>
+								<form action="http://dakhma.net/elac/wp-comments-post.php" method="post" id="commentform">
+										<p>Logged in as <a href="http://dakhma.net/elac/wp-admin/profile.php">kull</a>. <a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdakhma.net%2Felac%2F%3Fpage_id%3D10&amp;_wpnonce=ca76c8af62" title="Log out of this account">Log out &raquo;</a></p>
+										<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea></p>
+						<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit" /><input type='hidden' name='comment_post_ID' value='10' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="0dad6807fc" />					</form>
+					</div><!--end respond-->
+		</div><!--content-->
+<div id="sidebar-border">
+<div id="sidebar">
+
+
+<ul>
+	<li class="widget">
+		<h3>Categories</h3>
+		<div id="zbench-cat">
+			<form action="http://dakhma.net/elac/" method="get">
+				<select name='cat' id='cat' class='postform'  onchange='return this.form.submit()'>
+	<option value='-1'>Select category</option>
+	<option class="level-0" value="6">About&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4">News&nbsp;&nbsp;(1)</option>
+</select>
+				<noscript><input type="submit" value="View" /></noscript>
+			</form>
+		</div>
+	</li>
+</ul>
+
+<ul>
+	<li class="widget">
+		<h3>Links</h3>
+		<ul class="zsofa-links">
+			<li><a href="http://www.cl.uni-heidelberg.de/">Computational Linguistics Heidelberg</a></li>
+		</ul>
+		<div class="fixed"></div>
+		<h3>Meta</h3>
+		<ul>
+			<li><a href="http://dakhma.net/elac/wp-admin/">Admin</a></li>			<li><a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;_wpnonce=ca76c8af62">Abmelden</a></li>
+					</ul>
+	</li>
+</ul>
+
+
+
+
+
+</div>
+</div></div><!--wrapper-->
+<div class="fixed"></div>
+<div id="footer">
+</div><!--footer-->
+</body>
+</html>

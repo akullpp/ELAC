@@ -1,0 +1,119 @@
+Usage Instructions
+
+
+Please read INSTALL for installation instructions.
+
+Important notes:
+
+1. BART is a very complex tool with very specific options. Therefore, you have to
+set it up and run it on the corpora specified in ./config/config.xml as
+PathToTrainingFiles and PathToTestFiles with your individual options.
+Furthermore, we suggest that you train BART itself otherwise its results may be
+to bad to be considered by the classifiers.
+This is a process our program does not want to do automatically since many
+external factors and the user's intention must be considered when running BART.
+By running this program, we assume that you did the necessary steps with BART
+and the output of BART is located in the markables folder.
+
+2. We are sorry for the huge console output. This is a general problem of MMAX2
+and was reported by us. A concise output of the results will be printed after
+the specific process has finished.
+
+3. Please read about our findings in the ./poster.png
+
+
+Instructions:
+
+Start the CLI via "java -Xmx1024M -jar ELAC.jar"
+
+(1) starts the JavaRap preprocessing unit.
+This is a necessary prerequisite for the training (4) and testing (5) process!
+It creates a javarap subfolder in the Basedata folder specified by
+PathToTrainingFiles/PathToTestFiles in the config.xml with the JavaRap results.
+Please select whether you have JavaRap installed locally (1-2) or you need to
+access it via an SSH connection (1-1). You will be prompted for your
+credentials if you choose to run JavaRap via SSH. It is very important that you
+forward X in order to get prompted for your credentials.
+
+(2) starts the feature distribution analysis tool.
+This is a standalone tool. Please specify whether you want the feature
+distribution of the test corpus (2-1) or training corpus (2-2) which have to be
+specified by PathToTrainingFiles/PathToTestFiles in the config.xml.
+After the process is finished, you will find a file in the ResultOutputDir (see
+config.xml) with the total/average distribution of each feature in the selected
+corpus.
+
+(3) starts the Salsa converter.
+This is a standalone tool. It converts an XML file in Tiger/XML format which
+you have to provide to an XML file with an inline annotation that can be
+processed by MMAX2. It will be written to the folder specified by
+ResultOutputDir in the config.
+
+(4) starts the training of the classifier.
+You will need the results from the JavaRapPreProcessing unit (1) in order to run
+this process!
+Furthermore, you will need to set following options in your .config/config.xml:
+	
+	a) PathToTrainingFiles: Please enter the path to the training corpus.
+	
+	b) Runner: Please enter the ACR-Systems you want to use. In order to use an
+	ACR-System it must be specified in de.uniheidelberg.cl.swp.testacr.
+	Currently BART, JavaRap and LingPipe are supported. Please feel free to add
+	your ACR-System.
+
+	c) EvaluationMethod: MUC6 is the default to choose. If you consider to use
+	DIRECTNEIGHBORSONLY please read the extended documentation.
+	
+	d) FeatureFilter: Enter the features which are to be extracted. The features
+	have to be specified in de.uniheidelberg.cl.swp.featureExtraction.features.
+	Please note that every feature which is specified in FeatureFilter has to
+	have its specific entry with its custom value or value range.
+
+The results of each individual ACR-System and the generated results.arff file
+can be found at the location specified by ResultOutputDir in the config. The
+results.arff is used in the testing process (5).
+
+Notes:
+1. Multiple options like Runner or FeatureFilter as well as the specifc entries
+for each feature have to be separated by ";".
+2. Depending on the size of the corpus, this process might take a long time.
+
+
+(5) starts the testing/machine-learning process.
+You will need a WEKA compatible ARFF file in order to run this process, which is 
+either created by the training process (4) or can be provided in form of a 
+custom ARFF file (5-1)!
+Furthermore, you will need to set the following options in your .config/config.xml:
+
+	a) PathToTestFiles: Please enter the path to the test corpus.
+
+	b) classifier/subclassifier: Specify the classifier/subclassifier. We
+	currently support:
+	J48 as classifier and subclassifier
+	BAYES as classifier and subclassifier
+	BAGGING as classifier which needs a subclassifier
+	ADABOOST as classifier which needs a subclassifier
+	NEARESTNEIGHBOR as subclassifier for stacking
+	ZEROR as subclassifier for stacking
+	KSTAR as subclassifier for stacking
+	BFTREE as subclassifier for stacking
+	
+	c) stacking: True or false. If you want to use stacking, you will have to
+	specify a classifier for level 1 and a subclassifier for level 0.
+	
+	d) options: Options for the (sub-)classifier. Please read the WEKA
+	documentation for an extensive list.
+
+The result of the testing process can be found at the location specified by
+ResultOutputDir in the config.
+
+Note, depending on the size of the corpus, this process might take a long time.
+
+
+(6) starts the Ablation Testing tool.
+This is a standalone tool. You will have to specify the name for the new file,
+output will be written to the folder specified by ResultOutputDir in the 
+config. Furthermore, you will have to specify the correct path to the test 
+corpus in the PathToTestFiles entry in the config.
+
+Note, depending on the size of the corpus, this process might take a long time.

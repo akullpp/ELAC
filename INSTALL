@@ -1,0 +1,27 @@
+Installation Instructions
+
+
+Please read README for usage instructions.
+
+
+The build process was tested with Apache Ant 1.8.1
+
+
+Instructions:
+
+1. Please get Apache Ant at ant.apache.org and use their installation instructions.
+
+2. Execute Apache Ant with "ant" in the directory where the build.xml resides. What Apache Ant does: it
+	a) compiles the source code to ./bin/
+	b) creates a ./ELAC.JAR file for usage
+
+3. Additional options are:
+	"ant tar": creates an ./ELAC.tar archive of the project
+	"ant doc": creates the JavaDocs in ./doc/
+	"ant clean": cleans previous builds, i.e. deletes ./doc/ and ./bin/
+
+
+Notes:
+1. During the compile process an "includeantruntime" warning will be displayed. This is an Ant bug.
+2. Ant's JavaDoc function is currently broken. 130 Warnings will be created. The JavaDocs will be viewable but some internal references won't be shown.
+Although this is a minor issue, we recommend to import the project in Eclipse and run the internal JavaDoc tool for a perfect JavaDoc build.

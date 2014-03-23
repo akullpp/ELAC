@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://dakhma.net/elac/?page_id=72 -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>  Configuration | ELAC: Ensemble Learning for ACR-Systems</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="Configuration%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/style.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://dakhma.net/elac/?feed=rss2" />
+	<link rel="pingback" href="http://dakhma.net/elac/xmlrpc.php" />
+			<link rel="alternate" type="application/rss+xml" title="ELAC: Ensemble Learning for ACR-Systems &raquo; Configuration Kommentar Feed" href="http://dakhma.net/elac/?feed=rss2&amp;page_id=72" />
+<script type='text/javascript' src='Configuration%20ELAC%20Ensemble%20Learning%20for%20ACR-Systems_files/comment-reply.js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dakhma.net/elac/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dakhma.net/elac/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='ELAC: Ensemble Learning for ACR-Systems' href='http://dakhma.net/elac' />
+<link rel='up' title='Documentation' href='http://dakhma.net/elac/?page_id=49' />
+<link rel='prev' title='Training' href='http://dakhma.net/elac/?page_id=63' />
+<link rel='next' title='Feature distribution' href='http://dakhma.net/elac/?page_id=105' />
+<meta name="generator" content="WordPress 3.0" />
+<link rel='canonical' href='http://dakhma.net/elac/?page_id=72' />
+</head>
+<body>
+<div id="nav">
+			<div id="menus"><ul><li class="current_page_item"><a href="./ELAC Ensemble Learning for ACR-Systems.html">Home</a></li><li class="page_item page-item-49"><a href="./Documentation ELAC Ensemble Learning for ACR-Systems.html" title="Documentation">Documentation</a>
+<ul class='children'>
+	<li class="page_item page-item-225"><a href="./Architecture ELAC Ensemble Learning for ACR-Systems.html" title="Architecture">Architecture</a></li>
+	<li class="page_item page-item-72"><a href="./Configuration ELAC Ensemble Learning for ACR-Systems.html" title="Configuration">Configuration</a></li>
+	<li class="page_item page-item-56"><a href="./Preprocessing ELAC Ensemble Learning for ACR-Systems.html" title="Preprocessing">Preprocessing</a></li>
+	<li class="page_item page-item-121"><a href="./Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-181"><a href="./Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-215"><a href="./Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-53"><a href="./Feature selection ELAC Ensemble Learning for ACR-Systems.html" title="Feature selection">Feature selection</a></li>
+	<li class="page_item page-item-10"><a href="./Extension ELAC Ensemble Learning for ACR-Systems.html" title="Extension">Extension</a></li>
+</ul>
+</li>
+<li class="page_item page-item-60"><a href="./Findings ELAC Ensemble Learning for ACR-Systems.html" title="Findings">Findings</a>
+<ul class='children'>
+	<li class="page_item page-item-63"><a href="./Findings Training ELAC Ensemble Learning for ACR-Systems.html" title="Training">Training</a></li>
+	<li class="page_item page-item-128"><a href="./Findings Testing ELAC Ensemble Learning for ACR-Systems.html" title="Testing">Testing</a></li>
+	<li class="page_item page-item-105"><a href="./Findings Feature distribution ELAC Ensemble Learning for ACR-Systems.html" title="Feature distribution">Feature distribution</a></li>
+	<li class="page_item page-item-135"><a href="./Domain adaptation ELAC Ensemble Learning for ACR-Systems.html" title="Domain adaptation">Domain adaptation</a></li>
+</ul>
+</li>
+</ul></div>
+	</div>
+<div id="wrapper">
+	<div id="header">
+		<h1><a href="http://dakhma.net/elac">ELAC: Ensemble Learning for ACR-Systems</a></h1>
+		<h2></h2>
+					</div>
+<hr />
+<div id="content">
+		<div class="post post-single" id="post-72"><!-- post div -->
+		<h2 class="title title-single">Configuration</h2>
+		<div class="post-info-top">
+			<span class="post-info-date">Posted on 30. Juli 2010 [<a class="post-edit-link" href="http://dakhma.net/elac/wp-admin/post.php?post=72&amp;action=edit" title="Seite bearbeiten">Edit</a>]</span>
+			<span id="addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a> (0)</span>
+		</div>
+		<div class="fixed"></div>
+		<div class="entry">
+			<h2>General Information</h2>
+<p>The config.xml file found in the ./config folder of the project directory is the central place to make customizations to several parts of the ensemble learning process, like adjusting the file paths to corpora or managing ACR subsystems.<br />
+On this site you can find explanations of every parameter and several example values.</p>
+<h2 id="paths">Corpus Paths</h2>
+<p>The first portion of the config file contains paths to the different kinds of corpora used by the program. Relative paths are already set, but can be changed to fit your needs.<br />
+The two following paths (namely the paths to training and testing corpora respectively) <strong>must be set in any case</strong> to have ELAC running:</p>
+<p>
+<pre><code>
+&lt;!-- Test/Train --&gt;
+&lt;entry key="PathToTrainingFiles"&gt;../Data/semeval_train50/&lt;/entry&gt;
+&lt;entry key="PathToTestFiles"&gt;../Data/semeval_test/&lt;/entry&gt;
+</code></pre>
+</p>
+<p>For development purposes this can be basicly extended as needed as long as it sticks to the given syntax and is refered to correctly from within the code. For tests on domain adaptation it could look like this:</p>
+<p>
+<pre><code>
+&lt;!-- Test/Train --&gt;
+&lt;entry key="PathToTrainingFiles"&gt;../Data/semeval_train50/&lt;/entry&gt;
+&lt;entry key="PathToTestFiles"&gt;../Data/semeval_test/&lt;/entry&gt;
+&lt;entry key="PathToDomainFiles"&gt;../Data/semeval_domainMMAX/&lt;/entry&gt;
+</code></pre>
+</p>
+<h2 id="acr">ACR Systems</h2>
+<p>As ELAC is programmed to be easily expandable you can change or add the subsystems for anaphora and coreference resolution (ACR) in the config file. Of course, every single system has to be implemented in the code, but this config option defines which of the implemented systems are actually used. At the moment, this comprises <a href="http://www.bart-coref.org/" target="_blank">BART</a>, <a href="http://wing.comp.nus.edu.sg/~qiu/NLPTools/JavaRAP.html" target="_blank">JavaRAP</a> and <a href="http://alias-i.com/lingpipe/" target="_blank">LingPipe</a>:</p>
+<p>
+<pre><code>
+&lt;!-- ACR-Systems --&gt;
+&lt;entry key=&gt;"Runner"&gt;JavaRapRunner;BARTRunner;LingpipeRunner&lt;/entry&gt;
+</code></pre>
+</p>
+<h3>Lingpipe Chunker</h3>
+<p>As LingPipe needs a chunking model in order to work correctly ELAC provides a MUC6 trained chunker. This can be changed (e.g. to a statistical model) for testing and development purposes.</p>
+<p>
+<pre><code>
+&lt;!--Lingpipe Chunker --&gt;
+&lt;entry key="LingPipeChunkgerModel"&gt;
+./res/ne-en-news-muc6.AbstractCharLmRescoringChunker
+&lt;/entry&gt;
+</code></pre>
+</p>
+<h2>Feature Extraction</h2>
+<p>This central part of the config file is used in the processes of training, testing and evaluation.</p>
+<h3 id="evalmethod">Evaluation Method</h3>
+<p>The first entry defines the evaluation method which is usually set to MUC6 evaluation which takes into account the cross product of a coreference chain to form coreference pairs, but can be switched to use direct neighbors only.</p>
+<p>
+<pre><code>
+&lt;!-- Feature Extraction --&gt;
+&lt;entry key="EvaluationMethod"&gt;MUC6&lt;/entry&gt;
+</code></pre>
+</p>
+<h4>Possible values:</h4>
+<ul>
+<li><code>MUC6</code></li>
+<li><code>DIRECTNEIGHBORSONLY</code></li>
+</ul>
+<h3 id="featurefilter">Feature Filter</h3>
+<p>This parameter selects a sub-set of all possible features to be extracted from the corpus. Note that every feature featured (haha!) in this list has to be specified with a certain value in its own parameter. A short description of the number and kinds of arguments are given in brackets (leave them out in the actual file!) and possible values are mentioned after each feature.</p>
+<p>For a detailed desciption of each feature please refer to the JavaDocs of its respective class.</p>
+<p>
+<pre><code>
+&lt;entry key="FeatureFilter"&gt;isSubj;neType&lt;/entry&gt;
+
+&lt;entry key="isSubj"&gt;true&lt;/entry&gt;
+&lt;entry key="neType"&gt;other&lt;/entry&gt;
+</code></pre>
+</p>
+<p><h4>Possible values:</h4>
+<ul>
+<li><code>isSubj</code> (boolean): reference to the subject of a sentence.
+<ul>
+<li><code>true</code></li>
+<li><code>false</code></li>
+</ul>
+</li>
+<li><code>neType</code> (string[;string;...]): kind of named entity, the anaphora refers to.
+<ul>
+<li><code>organization</code></li>
+<li><code>location</code></li>
+<li><code>person</code></li>
+<li><code>other</code></li>
+</ul>
+</li>
+<li><code>pronounCountSentence</code> (integer;integer): number of competing pronouns in the same sentence.
+<ul>
+<li>minimum;maximum</li>
+</ul>
+</li>
+<li><code>anaphoraPos</code> (string[;string;...]): Part of Speech tag of the anaphora.
+<ul>
+<li><code>prp</code></li>
+<li><code>prp$</code></li>
+<li><code>nnp</code></li>
+<li><code>nn</code></li>
+<li><code>nns</code></li>
+<li><code>dt</code></li>
+<li><code>else</code></li>
+</ul>
+</li>
+<li><code>antecedentPos</code> (string[;string;...]): Part of Speech tag of the antecedent.
+<ul>
+<li><code>prp</code></li>
+<li><code>prp$</code></li>
+<li><code>nnp</code></li>
+<li><code>nn</code></li>
+<li><code>nns</code></li>
+<li><code>dt</code></li>
+<li><code>else</code></li>
+</ul>
+</li>
+<li><code>sentenceOffset</code> (integer;integer): distance between anaphora and antecedent in sentences.
+<ul>
+<li>minimum;maximum</li>
+</ul>
+</li>
+<li><code>stringMatch</code> (boolean): specifies whether anaphora and antecedent have identical string representations.
+<ul>
+<li><code>true</code></li>
+<li><code>false</code></li>
+</ul>
+</li>
+</ul>
+<h2>Machine Learning</h2>
+<p>After the training process <a href="http://www.cs.waikato.ac.nz/~ml/weka/" target="_blank">Weka</a> is used for machine learning. This part of the config gives the user the ability tweak basic parameters without having to mess with Weka itself.</p>
+<p>Weka provides several classifiers that can be used to evaluate your results:</p>
+<p>
+<pre><code>
+&lt;entry key="classifier"&gt;J48&lt;/entry&gt;
+</code></pre>
+</p>
+<h4>Possible values:</h4>
+<ul>
+<li><code>BAYES</code</li>
+<li><code>J48</code></li>
+<li><code>BAGGING</code> (subclassifier needed)</li>
+<li><code>ADABOOST</code> (subclassifier needed)</li>
+<li><code>NEARESTNEIGHBOR</code>  (simple linear classifier)</li>
+<li><code>ZeroR</code> (rule based classifier)</li>
+</ul>
+<p>Some of the above mentioned classifiers also need a subclassifier, which is specified by the following statement:</p>
+<pre><code>
+&lt;entry key="subclassifier"&gt;J48&lt;/entry&gt;
+</code></pre>
+<p></p>
+<h4>Possible values:</h4>
+<ul>
+<li><code>BAYES</code></li>
+<li><code>J48</code></li>
+</ul>
+<p>Weka can further be used with different arguments:</p>
+<p>
+<pre><code>
+&lt;entry key="options"&gt;N 4 -R&lt;/entry&gt;
+</code></pre>
+</p>
+<p>Refer to Weka's documentation for all possible options.</p>
+<h2>Stacking</h2>
+<p>The last statement allows the activation of stacking for the evaluation process. Setting it to anything different from <code>true</code> or leaving it blank will disable stacking.</p>
+<p>If stacking is enabled, the configuration option for <code>subclassifier</code> is used as source for the level-0 classifier, whereas <code>classifier</code> specifies the level-1 (meta) learner.</p>
+<p>
+<pre><code>
+&lt;entry key="stacking"&gt;true&lt;/entry&gt;
+</code></pre>
+</p>
+<h4>Possible values:</h4>
+<ul>
+<li><code>true</code>: enables stacking</li>
+<li><code>false</code>: disables stacking</li>
+</ul>
+<h2 id="output">Output</h2>
+<p>In this last segment of the config file everything concerning the output can be tweaked, from file paths to output method.</p>
+<p>The first two lines are reponsible for the paths to write the output and a log file containing a documentation of all processes started aswell as potential error messages.</p>
+<p>
+<pre><code>
+&lt;!-- Output --&gt;
+&lt;entry key="PathForLog"&gt;../Data/entry&gt;
+&lt;entry key="ResultOutputDir"&gt;../Data/entry&gt;
+</code></pre>
+</p>
+<p>The last two lines trigger the option of printing correctly (true positives) or incorrectly (false positives, false negatives) identified coreference pairs into the output file.</p>
+<p>
+<pre><code>
+&lt;entry key="PrintCorrectCorefPairs"&gt;false&lt;/entry&gt;
+&lt;entry key="PrintWrongCorefPairs"&gt;false&lt;/entry&gt;
+</code></pre>
+</p>
+<h4>Possible values:</h4>
+<ul>
+<li><code>true</code>: enables the specified output</li>
+<li><code>false</code>: disables the specified output</li>
+</ul>
+					</div>
+	</div><!-- END post -->
+	<!-- You can start editing here. -->
+						<!-- If comments are open, but there are no comments. -->
+			<div id="comments-div"><span id="comments-addcomment"><a href="#respond"  rel="nofollow" title="Leave a comment ?">Leave a comment</a></span><h2 id="comments">0 Comments.</h2></div>
+						<div id="respond">
+			<h2>Leave a Reply</h2>
+			<div class="cancel-comment-reply">
+				<small><a rel="nofollow" id="cancel-comment-reply-link" href="/elac/?page_id=72#respond" style="display:none;">Hier klicken, um die Antwort abzubrechen.</a></small>
+			</div>
+								<form action="http://dakhma.net/elac/wp-comments-post.php" method="post" id="commentform">
+										<p>Logged in as <a href="http://dakhma.net/elac/wp-admin/profile.php">kull</a>. <a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdakhma.net%2Felac%2F%3Fpage_id%3D72&amp;_wpnonce=ca76c8af62" title="Log out of this account">Log out &raquo;</a></p>
+										<p><textarea name="comment" id="comment" cols="100%" rows="6" tabindex="4" onkeydown="if(event.ctrlKey&amp;&amp;event.keyCode==13){document.getElementById('submit').click();return false};"></textarea></p>
+						<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit" /><input type='hidden' name='comment_post_ID' value='72' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment" name="_wp_unfiltered_html_comment" value="dd09de18d6" />					</form>
+					</div><!--end respond-->
+		</div><!--content-->
+<div id="sidebar-border">
+<div id="sidebar">
+
+
+<ul>
+	<li class="widget">
+		<h3>Categories</h3>
+		<div id="zbench-cat">
+			<form action="http://dakhma.net/elac/" method="get">
+				<select name='cat' id='cat' class='postform'  onchange='return this.form.submit()'>
+	<option value='-1'>Select category</option>
+	<option class="level-0" value="6">About&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4">News&nbsp;&nbsp;(1)</option>
+</select>
+				<noscript><input type="submit" value="View" /></noscript>
+			</form>
+		</div>
+	</li>
+</ul>
+
+<ul>
+	<li class="widget">
+		<h3>Links</h3>
+		<ul class="zsofa-links">
+			<li><a href="http://www.cl.uni-heidelberg.de/">Computational Linguistics Heidelberg</a></li>
+		</ul>
+		<div class="fixed"></div>
+		<h3>Meta</h3>
+		<ul>
+			<li><a href="http://dakhma.net/elac/wp-admin/">Admin</a></li>			<li><a href="http://dakhma.net/elac/wp-login.php?action=logout&amp;_wpnonce=ca76c8af62">Abmelden</a></li>
+					</ul>
+	</li>
+</ul>
+
+
+
+
+
+</div>
+</div></div><!--wrapper-->
+<div class="fixed"></div>
+<div id="footer">
+</div><!--footer-->
+</body>
+</html>
